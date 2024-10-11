@@ -33,8 +33,13 @@ public class Lab1P2 {
                 case 2:
                     System.out.println("Ingrese el mensaje a descifrar");
                     String mensaje = sc.next();
+                    int validacion = mensaje.length();               
                     
-                    desci(mensaje);
+                    if (validacion % 2 == 1) {
+                        System.out.println("El codigo a descrifrar no puede ser impar");
+                    } else {
+                        desci(mensaje);
+                    }                    
                     break;
                     
                 case 3:
@@ -50,14 +55,22 @@ public class Lab1P2 {
     }
     
     private static void desci(String mensaje) {
-        int validacion = mensaje.length();        
-        
-        System.out.println(validacion);
-        if (validacion % 2 == 1) {
-            System.out.println("Impar");
-        } else {
-            System.out.println("par");
-        }
+        String solucion = " ";                                                                                
+                               
+        for (int i = 0; i < mensaje.length(); i+=2) {            
+            int poss1 = mensaje.charAt(i)-48;
+            int poss2 = mensaje.charAt(i+1)-48;
+                        
+            String pos1 = String.valueOf(poss1);
+            String pos2 = String.valueOf(poss2);
+            
+            String cadena = pos1 + pos2;
+            
+            switch(cadena){
+                case 
+                  break;
+            }
+        }        
     } 
     
 }
