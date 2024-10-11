@@ -27,7 +27,7 @@ public class Lab1P2 {
                     System.out.println("Ingrese la palabra: ");
                     String palabra = sc.next();
                     
-                    palindromia(palabra);
+                    Ispalindrome(palabra);
                     break;
                     
                 case 2:
@@ -49,13 +49,10 @@ public class Lab1P2 {
                     break;
             }
         } while (opcion != 3);
-    }
+    }        
     
-    private static void palindromia(String palabra) {
+    private static void desci(String mensaje) {
         
-    }
-    
-    private static void desci(String mensaje) {                                                                                                                  
         for (int i = 0; i < mensaje.length(); i+=2) {            
             int poss1 = mensaje.charAt(i)-48;
             int poss2 = mensaje.charAt(i+1)-48;
@@ -146,6 +143,40 @@ public class Lab1P2 {
                     break;
             }            
         }        
-    } 
-    
+    }     
+    private static void Ispalindrome(String palabra) {
+        boolean espalindromo = false;
+        String valor = " ";
+        
+        String almacenador = " ";
+        int posicion = 0;
+        valor = recursivo(palabra, almacenador, 0, 3, posicion);                    
+        
+        if (valor.isEmpty()) {
+            espalindromo = false;
+        } else {
+            espalindromo = true;
+        }
+        
+        if (espalindromo) {
+            System.out.println("Palabra Original: " + palabra);
+            System.out.println("Palindromia: " + valor);            
+        } else {
+            System.out.println("Palabra Original: " + palabra);
+            System.out.println("No se ha encontrado palindromia en este cadena");
+        }
+    }
+
+    private static String recursivo(String palabra, String almacenador, int pos1, int pos2, int posicion) {                
+            almacenador = palabra.substring(pos1, pos2);
+        
+            if (almacenador.charAt(pos1) == almacenador.charAt(pos2)) {            
+                return almacenador;                
+            } else if (posicion > palabra.length()-3) {
+                return " ";
+            } else {
+                recursivo(palabra, almacenador, pos1+1,pos2+1, posicion+1);
+            }
+        return " ";
+    }    
 }
